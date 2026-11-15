@@ -11,7 +11,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth; /* Hace que el desplazamiento al hacer clic sea suave */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -31,14 +31,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 12px 5%;
             z-index: 1000;
             border-bottom: 1px solid #333;
         }
 
         .logo {
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             line-height: 1.1;
             text-decoration: none;
             color: #ffffff;
@@ -51,13 +51,13 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #cccccc;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
         }
 
@@ -65,23 +65,23 @@
             color: #f5a623;
         }
 
-        /* --- SECCIÓN PRINCIPAL (HERO) --- */
+        /* --- SECCIÓN PRINCIPAL (HERO) CON TU FOTO REAL --- */
         .hero {
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 120px 20px 60px 20px;
             background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('img/local - frente.jpeg') no-repeat center center/cover;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #ffffff;
         }
 
@@ -94,6 +94,7 @@
             max-width: 600px;
             margin-bottom: 30px;
             color: #dddddd;
+            line-height: 1.5;
         }
 
         /* --- BOTONES --- */
@@ -132,17 +133,20 @@
             background-color: #1ebe5d;
         }
 
-        /* --- SECCIONES ADICIONALES --- */
+        /* --- SECCIONES DE CONTENIDO --- */
         section.content-section {
-            padding: 100px 10% 60px 10%;
-            min-height: 80vh;
+            padding: 80px 10% 60px 10%;
+            min-height: 60vh;
             border-bottom: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         section.content-section h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: #f5a623;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         section.content-section p {
@@ -151,36 +155,38 @@
             line-height: 1.6;
         }
 
-        /* --- ADAPTACIÓN PARA CELULARES --- */
+        /* --- ADAPTACIÓN RESPONSIVA PARA CELULARES --- */
         @media (max-width: 768px) {
             header {
-                flex-direction: column !important;
-                align-items: center !important;
-                padding: 12px !important;
-                text-align: center;
+                flex-direction: column;
+                gap: 8px;
+                padding: 10px;
             }
 
             .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-                margin-top: 10px;
-                font-size: 0.9rem;
+                gap: 15px;
+                font-size: 0.85rem;
             }
 
             .hero {
-                padding-top: 120px;
+                padding-top: 140px; /* Evita que el menú tapé el título */
             }
 
             .hero h1 {
-                font-size: 2.2rem !important;
+                font-size: 2.1rem !important;
                 line-height: 1.2;
             }
 
             .hero p {
-                font-size: 1rem;
-                padding: 0 10px;
+                font-size: 0.95rem;
+            }
+
+            section.content-section {
+                padding: 60px 6%;
+            }
+
+            section.content-section h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -194,7 +200,7 @@
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#rubros">Rubros</a></li>
             <li><a href="#el-local">El Local</a></li>
-            <li><a href="#contacto">Ubicación y Horarios</a></li>
+            <li><a href="#contacto">Ubicación</a></li>
         </ul>
     </header>
 
@@ -223,7 +229,7 @@
     <!-- SECCIÓN UBICACIÓN Y HORARIOS -->
     <section id="contacto" class="content-section">
         <h2>Ubicación y Horarios</h2>
-        <p>📍 <strong>Dirección:</strong> Avenida Acoyte 351, Caballito, Ciudad de Buenos Aires.<br>
+        <p>📍 <strong>Dirección:</strong> Avenida Acoyte 351, Caballito, Ciudad de Buenos Aires.<br><br>
         🕒 <strong>Horarios:</strong> Abierto todos los días con atención personalizada.</p>
     </section>
 
