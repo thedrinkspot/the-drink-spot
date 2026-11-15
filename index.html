@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Drink Spot - Caballito</title>
     <style>
-        /* --- ESTILOS GENERALES --- */
+        /* --- ESTILOS GENERALES Y RESET --- */
         * {
             margin: 0;
             padding: 0;
@@ -65,7 +65,7 @@
             color: #f5a623;
         }
 
-        /* --- PORTADA PRINCIPAL (HERO) --- */
+        /* --- PORTADA PRINCIPAL (HERO) CON TU FOTO REAL --- */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -146,20 +146,21 @@
             text-align: center;
         }
 
-        /* --- GRILLA DE RUBROS --- */
+        /* --- CATÁLOGO DE RUBROS Y STOCK DINÁMICO --- */
         .rubros-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
         .rubro-card {
             background-color: #1a1a1a;
             border: 1px solid #333;
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
@@ -168,16 +169,66 @@
             border-color: #f5a623;
         }
 
+        .rubro-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
         .rubro-card h3 {
             color: #ffffff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-size: 1.3rem;
         }
 
-        .rubro-card p {
+        .stock-badge {
+            display: inline-block;
+            background-color: rgba(37, 211, 102, 0.15);
+            color: #25d366;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+
+        /* Lista de productos interior */
+        .productos-lista {
+            list-style: none;
             color: #aaa;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
+            padding-left: 0;
             margin-bottom: 15px;
+            max-height: 160px;
+            overflow-y: auto;
+            border-top: 1px solid #2a2a2a;
+            border-bottom: 1px solid #2a2a2a;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .productos-lista li {
+            padding: 3px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .btn-card {
+            background-color: #f5a623;
+            color: #121212;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .btn-card:hover {
+            background-color: #d4881c;
         }
 
         /* --- EL LOCAL Y MAPA --- */
@@ -250,7 +301,7 @@
         <a href="#inicio" class="logo">THE DRINK<br><span>SPOT</span></a>
         <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#rubros">Rubros</a></li>
+            <li><a href="#rubros">Rubros y Stock</a></li>
             <li><a href="#el-local">El Local</a></li>
             <li><a href="#ubicacion">Ubicación y Horarios</a></li>
         </ul>
@@ -262,30 +313,15 @@
         <p>Seleccioná el rubro que estás buscando para explorar todo nuestro catálogo con stock actualizado al instante.</p>
         <div class="btn-container">
             <a href="#rubros" class="btn-primary">Explorar Rubros</a>
-            <a href="https://wa.me/5491139427635" target="_blank" class="btn-whatsapp">Pedir por WhatsApp</a>
+            <a href="https://wa.me/5491139427635?text=Hola!%20Quiero%20hacer%20un%20pedido" target="_blank" class="btn-whatsapp">Pedir por WhatsApp</a>
         </div>
     </section>
 
-    <!-- SECCIÓN RUBROS -->
+    <!-- SECCIÓN RUBROS Y STOCK (CONECTADO CON productos.js) -->
     <section id="rubros">
-        <h2>Nuestros Rubros</h2>
-        <div class="rubros-grid">
-            <div class="rubro-card">
-                <h3>Cervezas</h3>
-                <p>Artesanales, industriales, nacionales e importadas siempre en punto.</p>
-            </div>
-            <div class="rubro-card">
-                <h3>Vinos & Espumantes</h3>
-                <p>Etiquetas seleccionadas, tintos, blancos, rosados y espumantes.</p>
-            </div>
-            <div class="rubro-card">
-                <h3>Aperitivos & Espirituosas</h3>
-                <p>Fernet, gin, vodka, aperitivos y todo para tus previas.</p>
-            </div>
-            <div class="rubro-card">
-                <h3>Hielo & Extras</h3>
-                <p>Bolsas de hielo, energizantes, gaseosas, cristalería y accesorios.</p>
-            </div>
+        <h2>Catálogo y Stock en Vivo</h2>
+        <div class="rubros-grid" id="contenedor-rubros">
+            <!-- Los productos y stock se cargan automáticamente desde productos.js -->
         </div>
     </section>
 
@@ -315,11 +351,41 @@
                 <p>💬 Hacé tu pedido al toque por WhatsApp y retiralo sin esperas o recibilo en casa.</p>
             </div>
             <div class="map-container">
-                <!-- Mapa interactivo de Google Maps apuntando a Av. Acoyte 351 -->
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9926414749215!2d-58.43722552346985!3d-34.61365005739097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb0728c3c78d%3A0x83e2ef26194b2a92!2sAv.%20Acoyte%20351%2C%20C1405%20CABA!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
+    <!-- SCRIPT PARA LEER AUTOMÁTICAMENTE CATALOGO_DATA DESDE productos.js -->
+    <script src="productos.js"></script>
+    <script>
+        const contenedor = document.getElementById('contenedor-rubros');
+        
+        if (typeof CATALOGO_DATA !== 'undefined') {
+            Object.keys(CATALOGO_DATA).forEach(categoria => {
+                const listaProductos = CATALOGO_DATA[categoria];
+                const card = document.createElement('div');
+                card.className = 'rubro-card';
+                
+                let itemsHtml = listaProductos.map(item => `<li>• ${item}</li>`).join('');
+                
+                card.innerHTML = `
+                    <div class="rubro-content">
+                        <div>
+                            <h3>${categoria}</h3>
+                            <span class="stock-badge">🟢 Stock en Local</span>
+                            <ul class="productos-lista">
+                                ${itemsHtml}
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/5491139427635?text=${encodeURIComponent('Hola! Quiero consultar por productos de la categoría: ' + categoria)}" target="_blank" class="btn-card">Consultar ${categoria}</a>
+                    </div>
+                `;
+                contenedor.appendChild(card);
+            });
+        } else {
+            contenedor.innerHTML = '<p style="color: #ff5555; text-align: center;">No se pudo cargar el archivo productos.js</p>';
+        }
+    </script>
 </body>
 </html>
