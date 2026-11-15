@@ -4,206 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Drink Spot - Caballito</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- ESTILOS GENERALES Y RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1.1;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .logo span {
+            color: #f5a623;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #cccccc;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f5a623;
+        }
+
+        /* --- SECCIÓN PRINCIPAL (HERO) --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('img/productos/cervezas-art.jpg') no-repeat center center/cover;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero h1 span {
+            color: #f5a623;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            color: #dddddd;
+        }
+
+        /* --- BOTONES --- */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: #f5a623;
+            color: #121212;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #d4881c;
+        }
+
+        .btn-whatsapp {
+            background-color: #25d366;
+            color: #ffffff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebe5d;
+        }
+
+        /* --- MEDIA QUERIES (ADAPTACIÓN PARA CELULARES) --- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column !important;
+                align-items: center !important;
+                padding: 12px !important;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+                margin-top: 10px;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding-top: 120px; /* Empuja el contenido hacia abajo para que el menú no lo tape */
+            }
+
+            .hero h1 {
+                font-size: 2.2rem !important;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Encabezado / Navbar con el logo al lado del nombre -->
-    <header class="navbar">
-    <a href="#inicio" class="logo">THE DRINK <span>SPOT</span></a>
-    <nav class="nav-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#catalogo">Rubros</a>
-        <a href="#galeria">El Local</a>
-        <a href="#ubicacion">Ubicación y Horarios</a>
-        <a href="https://wa.me/5491139427635?text=Hola%20The%20Drink%20Spot!%20Quisiera%20hacer%20un%20pedido." target="_blank" class="btn-wsp-nav">
-            <i class="fab fa-whatsapp"></i> Pedidos
-        </a>
-    </nav>
-</header>
+    <!-- BARRA SUPERIOR -->
+    <header>
+        <a href="#" class="logo">THE DRINK<br><span>SPOT</span></a>
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Rubros</a></li>
+            <li><a href="#">El Local</a></li>
+            <li><a href="#">Ubicación y Horarios</a></li>
+        </ul>
+    </header>
 
-    <!-- Sección Principal (Hero) -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <span class="badge">Bebidas & Espirituosas • Caballito</span>
-            <h1>Las mejores bebidas, <span>siempre frías</span></h1>
-            <p>Seleccioná el rubro que estás buscando para explorar todo nuestro catálogo con stock actualizado al instante.</p>
-            <div class="hero-buttons">
-                <a href="#catalogo" class="btn-primary">Explorar Rubros</a>
-                <a href="https://wa.me/5491139427635?text=Hola%20The%20Drink%20Spot!%20Quisiera%20consultar%20por%20bebidas." target="_blank" class="btn-whatsapp-hero">
-                    <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
-                </a>
-            </div>
+    <!-- PORTADA PRINCIPAL -->
+    <section class="hero">
+        <h1>Las mejores bebidas, <span>siempre frías</span></h1>
+        <p>Seleccioná el rubro que estás buscando para explorar todo nuestro catálogo con stock actualizado al instante.</p>
+        <div class="btn-container">
+            <a href="#" class="btn-primary">Explorar Rubros</a>
+            <a href="https://wa.me/" target="_blank" class="btn-whatsapp">Pedir por WhatsApp</a>
         </div>
     </section>
 
-    <!-- Sección de Todos los Rubros -->
-    <section id="catalogo" class="products-section">
-        <div class="section-header">
-            <h2>Nuestros Rubros</h2>
-            <p>Elegí una categoría para abrir el catálogo completo de productos en una nueva pestaña</p>
-        </div>
-
-        <div id="rubros-grid" class="categories-grid">
-            <!-- Se generan automáticamente todos los rubros desde productos.js -->
-        </div>
-    </section>
-
-    <!-- Galería del Local -->
-    <section id="galeria" class="gallery-section">
-        <div class="section-header">
-            <h2>Conocé The Drink Spot</h2>
-            <p>Un recorrido visual por nuestro local en Av. Acoyte 351, Caballito</p>
-        </div>
-
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="img/local - frente.jpeg" alt="Local Frente">
-                <div class="gallery-overlay"><span>Fachada - Av. Acoyte 351</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/heladera cervezas.jpeg" alt="Heladera Cervezas">
-                <div class="gallery-overlay"><span>Heladera Cervezas</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/heladera- cerveza artesanales.jpeg" alt="Heladera Cervezas Artesanales">
-                <div class="gallery-overlay"><span>Cervezas Artesanales</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/energizante-bebidas.jpeg" alt="Energizantes y Bebidas">
-                <div class="gallery-overlay"><span>Energizantes y Bebidas</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/Heladera- varios.jpeg" alt="Heladera Varios">
-                <div class="gallery-overlay"><span>Heladera Varios</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/Estanteria productos.jpeg" alt="Estantería Productos">
-                <div class="gallery-overlay"><span>Estantería de Productos</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/premium.jpeg" alt="Sección Premium">
-                <div class="gallery-overlay"><span>Línea Premium</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/regaleria-cristaleria.jpeg" alt="Regalería y Cristalería">
-                <div class="gallery-overlay"><span>Regalería y Cristalería</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/isla mostrador.jpeg" alt="Isla Mostrador">
-                <div class="gallery-overlay"><span>Isla Mostrador</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/mostrador-cervezas.jpeg" alt="Mostrador Cervezas">
-                <div class="gallery-overlay"><span>Mostrador y Exhibición</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="img/Hielo.jpeg" alt="Hielo">
-                <div class="gallery-overlay"><span>Hielo Disponible</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección de Ubicación y Horarios -->
-    <section id="ubicacion" class="location-section">
-        <div class="section-header">
-            <h2>Visítanos</h2>
-            <p>Atención personalizada en nuestro local en Caballito</p>
-        </div>
-
-        <div class="info-container">
-            <div class="info-card">
-                <h3><i class="fas fa-map-marker-alt"></i> Ubicación</h3>
-                <p class="address-text"><strong>Av. Acoyte 351</strong>, Caballito<br>C1405BGB, Cdad. Autónoma de Buenos Aires</p>
-                <p class="wsp-info"><i class="fab fa-whatsapp"></i> WhatsApp: 11 3942-7635</p>
-                
-                <div class="map-frame">
-                    <iframe 
-                        src="https://maps.google.com/maps?q=Av.%20Acoyte%20351,%20C1405BGB%20CABA&t=&z=16&ie=UTF8&iwloc=&output=embed" 
-                        width="100%" 
-                        height="240" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </div>
-
-            <div class="info-card">
-                <h3><i class="far fa-clock"></i> Horarios de Atención</h3>
-                <ul class="hours-list">
-                    <li><span>Lunes</span> <span>10:00 – 22:00 hs</span></li>
-                    <li><span>Martes</span> <span>10:00 – 22:00 hs</span></li>
-                    <li><span>Miércoles</span> <span>10:00 – 22:00 hs</span></li>
-                    <li><span>Jueves</span> <span>10:00 – 22:00 hs</span></li>
-                    <li><span>Viernes</span> <span>10:00 – 00:00 hs</span></li>
-                    <li><span>Sábado</span> <span>11:00 – 00:00 hs</span></li>
-                    <li><span>Domingo</span> <span>17:00 – 20:30 hs</span></li>
-                </ul>
-                <div class="holiday-alert">
-                    <i class="fas fa-info-circle"></i> Los días feriados el horario podría cambiar.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pie de página -->
-    <footer class="footer">
-        <p>&copy; 2026 <strong>The Drink Spot</strong> - Av. Acoyte 351, Caballito, CABA. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="productos.js"></script>
-    <script>
-        const iconosPorRubro = {
-            "CERVEZAS ART": "fa-beer",
-            "CERVEZAS INDUST": "fa-beer",
-            "VINOS": "fa-wine-bottle",
-            "ESPUMATES/CHAMP": "fa-champagne-glasses",
-            "GIN": "fa-martini-glass-citrus",
-            "APERITIVO": "fa-wine-glass",
-            "VODKA": "fa-martini-glass",
-            "WHISKY": "fa-whiskey-glass",
-            "RON": "fa-cocktail",
-            "TEQUILA": "fa-lemon",
-            "LICORES": "fa-flask",
-            "COCTELERIA": "fa-blender",
-            "ENERGIZANTES": "fa-bolt",
-            "GASEOSAS": "fa-bottle-water",
-            "AGUA Y JUGOS": "fa-droplet",
-            "HIELO": "fa-snowflake",
-            "REGALERIA": "fa-gift",
-            "SNACKS": "fa-cookie-bite",
-            "ALFJ/CHOCOLATES": "fa-candy-cane",
-            "TABAQUERIA": "fa-smoking",
-            "OTROS": "fa-box-open"
-        };
-
-        const rubrosGrid = document.getElementById('rubros-grid');
-
-        Object.keys(CATALOGO_DATA).forEach(rubro => {
-            const cantidad = CATALOGO_DATA[rubro].length;
-            const icono = iconosPorRubro[rubro] || "fa-wine-bottle";
-            const urlDestino = `rubro.html?cat=${encodeURIComponent(rubro)}`;
-
-            const card = document.createElement('a');
-            card.href = urlDestino;
-            card.target = "_blank";
-            card.className = "category-card clickable-rubro";
-            card.innerHTML = `
-                <div class="rubro-top">
-                    <div class="card-icon"><i class="fas ${icono}"></i></div>
-                    <span class="item-count-badge">${cantidad} productos</span>
-                </div>
-                <h3>${rubro}</h3>
-                <p class="card-desc">Ver catálogo completo de ${rubro.toLowerCase()} disponibles en stock.</p>
-                <span class="btn-card">Ver productos <i class="fas fa-external-link-alt"></i></span>
-            `;
-            rubrosGrid.appendChild(card);
-        });
-    </script>
 </body>
 </html>
