@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - The Drink Spot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Barra de Navegación Superior con Logo -->
+    <header class="navbar">
+    <a href="#inicio" class="logo">THE DRINK <span>SPOT</span></a>
+    <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#catalogo">Rubros</a>
+        <a href="#galeria">El Local</a>
+        <a href="#ubicacion">Ubicación y Horarios</a>
+        <a href="https://wa.me/5491139427635?text=Hola%20The%20Drink%20Spot!%20Quisiera%20hacer%20un%20pedido." target="_blank" class="btn-wsp-nav">
+            <i class="fab fa-whatsapp"></i> Pedidos
+        </a>
+    </nav>
+</header>
+
+    <!-- Cabecera Dinámica del Rubro -->
+    <section class="rubro-hero">
+        <div class="rubro-header-content">
+            <span class="badge" id="rubro-count">Cargando stock...</span>
+            <h1 id="rubro-title">Catálogo</h1>
+            <p>Seleccioná el producto que buscás para consultarlo o pedirlo directo por WhatsApp.</p>
+            
+            <!-- Buscador instantáneo mejorado -->
+            <div class="search-bar-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Buscar marca o producto en este rubro...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Grilla de Productos del Rubro -->
+    <section class="products-list-section">
+        <div id="products-grid" class="items-grid">
+            <!-- Los productos se cargan automáticamente desde productos.js -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 <strong>The Drink Spot</strong> - Av. Acoyte 351, Caballito, CABA. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Cargamos la base de datos y la lógica -->
+    <script src="productos.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const rubroSeleccionado = params.get('cat');
+
+        const titleEl = document.getElementById('rubro-title');
+        const countEl = document.getElementById('rubro-count');
+        const gridEl = document.getElementById('products-grid');
+        const searchInput = document.getElementById('search-input');
+
+        let productosDelRubro = [];
+
+        if (rubroSeleccionado && CATALOGO_DATA[rubroSeleccionado]) {
+            productosDelRubro = CATALOGO_DATA[rubroSeleccionado];
+            document.title = `${rubroSeleccionado} - The Drink Spot`;
+            titleEl.textContent = rubroSeleccionado;
+            renderizarProductos(productosDelRubro);
+        } else {
+            titleEl.textContent = "Rubro no encontrado";
+            countEl.textContent = "0 productos";
+            gridEl.innerHTML = `<p style="color:#aaa; text-align:center; grid-column: 1/-1;">Por favor volvé a la página principal y seleccioná una categoría válida.</p>`;
+        }
+
+        function renderizarProductos(lista) {
+            countEl.textContent = `${lista.length} productos disponibles en stock`;
+            gridEl.innerHTML = "";
+
+            if (lista.length === 0) {
+                gridEl.innerHTML = `<p style="color:#aaa; text-align:center; grid-column: 1/-1; padding: 40px;">No se encontraron productos que coincidan con tu búsqueda.</p>`;
+                return;
+            }
+
+            lista.forEach(producto => {
+                const mensajeWsp = encodeURIComponent(`Hola The Drink Spot! Quisiera consultar precio y pedir: *${producto}* (${rubroSeleccionado})`);
+                const linkWsp = `https://wa.me/5491139427635?text=${mensajeWsp}`;
+
+                const card = document.createElement('div');
+                card.className = 'single-product-card';
+                card.innerHTML = `
+                    <div class="product-info">
+                        <span class="stock-pill"><i class="fas fa-check-circle"></i> Stock Disponible</span>
+                        <h4>${producto}</h4>
+                    </div>
+                    <a href="${linkWsp}" target="_blank" class="btn-pedir-item">
+                        <i class="fab fa-whatsapp"></i> Pedir este producto
+                    </a>
+                `;
+                gridEl.appendChild(card);
+            });
+        }
+
+        // Filtro de búsqueda en tiempo real
+        searchInput.addEventListener('input', (e) => {
+            const texto = e.target.value.toLowerCase().trim();
+            const filtrados = productosDelRubro.filter(p => p.toLowerCase().includes(texto));
+            renderizarProductos(filtrados);
+        });
+    </script>
+</body>
+</html>

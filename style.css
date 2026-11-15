@@ -1,0 +1,548 @@
+/* Configuración General & Tipografía Profesional */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #0d0d0d;
+    color: #e1e1e1;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, .logo {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Barra de Navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 6%;
+    background-color: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.nav-logo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f39c12;
+    background-color: #000;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+}
+
+.logo span {
+    color: #f39c12;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #f39c12;
+}
+
+.btn-wsp-nav {
+    background-color: #25d366;
+    color: #fff !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s ease;
+}
+
+.btn-wsp-nav:hover {
+    background-color: #20ba5a;
+}
+
+/* Hero Principal: Fondo de la tienda con filtro suave */
+.hero {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(13, 13, 13, 0.3), rgba(13, 13, 13, 0.45)), url('img/local - frente.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 0 20px;
+    margin-top: 65px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 750px;
+    z-index: 2;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(243, 156, 18, 0.2);
+    color: #f39c12;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border: 1px solid rgba(243, 156, 18, 0.4);
+}
+
+.hero h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+.hero h1 span {
+    color: #f39c12;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    color: #f1f1f1;
+    margin-bottom: 35px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background-color: #f39c12;
+    color: #121212;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #d68910;
+}
+
+.btn-whatsapp-hero {
+    background-color: #25d366;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.btn-whatsapp-hero:hover {
+    background-color: #20ba5a;
+}
+
+/* Sección Rubros (Inicio) */
+.products-section {
+    padding: 90px 6%;
+    background-color: #121212;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.4rem;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-header p {
+    color: #888;
+    font-size: 1rem;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.category-card.clickable-rubro {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.category-card.clickable-rubro:hover {
+    transform: translateY(-5px);
+    border-color: #f39c12;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
+.rubro-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.card-icon {
+    font-size: 1.8rem;
+    color: #f39c12;
+}
+
+.item-count-badge {
+    background-color: rgba(255, 255, 255, 0.06);
+    color: #bbb;
+    font-size: 0.78rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.category-card h3 {
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.card-desc {
+    color: #999;
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+}
+
+.btn-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #f39c12;
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+
+/* ==========================================================
+   ESTILOS ESPECÍFICOS PARA LA PÁGINA DE RUBRO (rubro.html)
+   ================ ========================================== */
+
+.rubro-hero {
+    padding: 130px 6% 50px;
+    background: radial-gradient(circle at top, #1f1b13 0%, #0d0d0d 80%);
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.rubro-header-content h1 {
+    font-size: 2.8rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.rubro-header-content p {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.search-bar-container {
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-bar-container i {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.search-bar-container input {
+    width: 100%;
+    padding: 14px 20px 14px 48px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: #181818;
+    color: #fff;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-bar-container input:focus {
+    border-color: #f39c12;
+}
+
+.products-list-section {
+    padding: 60px 6% 100px;
+    background-color: #121212;
+    min-height: 50vh;
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.single-product-card {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.single-product-card:hover {
+    border-color: rgba(243, 156, 18, 0.4);
+    transform: translateY(-3px);
+}
+
+.stock-pill {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: #25d366;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.single-product-card h4 {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.btn-pedir-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: rgba(37, 211, 102, 0.12);
+    color: #25d366;
+    border: 1px solid rgba(37, 211, 102, 0.3);
+    padding: 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-pedir-item:hover {
+    background-color: #25d366;
+    color: #fff;
+}
+
+/* Galería del Local */
+.gallery-section {
+    padding: 90px 6%;
+    background-color: #0f0f0f;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 260px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    padding: 25px 20px 15px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.gallery-overlay span {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+
+/* Ubicación y Horarios */
+.location-section {
+    padding: 90px 6%;
+    background-color: #0a0a0a;
+}
+
+.info-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background-color: #161616;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 35px;
+}
+
+.info-card h3 {
+    color: #fff;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-card h3 i {
+    color: #f39c12;
+}
+
+.address-text {
+    color: #bbb;
+    margin-bottom: 15px;
+}
+
+.wsp-info {
+    color: #25d366;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.map-frame {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hours-list {
+    list-style: none;
+}
+
+.hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.hours-list li span:last-child {
+    font-weight: 600;
+    color: #fff;
+}
+
+.holiday-alert {
+    margin-top: 20px;
+    background: rgba(243, 156, 18, 0.1);
+    border-left: 3px solid #f39c12;
+    padding: 12px 15px;
+    font-size: 0.85rem;
+    color: #d1d1d1;
+    border-radius: 0 6px 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.holiday-alert i {
+    color: #f39c12;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #080808;
+    color: #666;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.footer strong {
+    color: #999;
+}
