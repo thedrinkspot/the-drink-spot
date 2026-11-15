@@ -11,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth; /* Hace que el desplazamiento al hacer clic sea suave */
         }
 
         body {
@@ -65,7 +66,7 @@
         }
 
         /* --- SECCIÓN PRINCIPAL (HERO) --- */
-       .hero {
+        .hero {
             position: relative;
             height: 100vh;
             display: flex;
@@ -74,7 +75,6 @@
             align-items: center;
             text-align: center;
             padding: 0 20px;
-            /* Apunta exactamente al nombre de tu archivo con espacios y extensión jpeg */
             background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('img/local - frente.jpeg') no-repeat center center/cover;
         }
 
@@ -132,7 +132,26 @@
             background-color: #1ebe5d;
         }
 
-        /* --- MEDIA QUERIES (ADAPTACIÓN PARA CELULARES) --- */
+        /* --- SECCIONES ADICIONALES --- */
+        section.content-section {
+            padding: 100px 10% 60px 10%;
+            min-height: 80vh;
+            border-bottom: 1px solid #222;
+        }
+
+        section.content-section h2 {
+            font-size: 2.5rem;
+            color: #f5a623;
+            margin-bottom: 20px;
+        }
+
+        section.content-section p {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* --- ADAPTACIÓN PARA CELULARES --- */
         @media (max-width: 768px) {
             header {
                 flex-direction: column !important;
@@ -151,7 +170,7 @@
             }
 
             .hero {
-                padding-top: 120px; /* Empuja el contenido hacia abajo para que el menú no lo tape */
+                padding-top: 120px;
             }
 
             .hero h1 {
@@ -170,23 +189,42 @@
 
     <!-- BARRA SUPERIOR -->
     <header>
-        <a href="#" class="logo">THE DRINK<br><span>SPOT</span></a>
+        <a href="#inicio" class="logo">THE DRINK<br><span>SPOT</span></a>
         <ul class="nav-links">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Rubros</a></li>
-            <li><a href="#">El Local</a></li>
-            <li><a href="#">Ubicación y Horarios</a></li>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#rubros">Rubros</a></li>
+            <li><a href="#el-local">El Local</a></li>
+            <li><a href="#contacto">Ubicación y Horarios</a></li>
         </ul>
     </header>
 
-    <!-- PORTADA PRINCIPAL -->
-    <section class="hero">
+    <!-- PORTADA PRINCIPAL (INICIO) -->
+    <section id="inicio" class="hero">
         <h1>Las mejores bebidas, <span>siempre frías</span></h1>
         <p>Seleccioná el rubro que estás buscando para explorar todo nuestro catálogo con stock actualizado al instante.</p>
         <div class="btn-container">
-            <a href="#" class="btn-primary">Explorar Rubros</a>
+            <a href="#rubros" class="btn-primary">Explorar Rubros</a>
             <a href="https://wa.me/" target="_blank" class="btn-whatsapp">Pedir por WhatsApp</a>
         </div>
+    </section>
+
+    <!-- SECCIÓN RUBROS -->
+    <section id="rubros" class="content-section">
+        <h2>Nuestros Rubros</h2>
+        <p>Acá se desplegarán próximamente todas las categorías de cervezas, vinos, espumantes, aperitivos y más. ¡Preparado para tu selección!</p>
+    </section>
+
+    <!-- SECCIÓN EL LOCAL -->
+    <section id="el-local" class="content-section">
+        <h2>El Local</h2>
+        <p>Ubicados en el corazón de Caballito, contamos con la mayor variedad de bebidas nacionales e importadas, cristalería y accesorios para que disfrutes al máximo.</p>
+    </section>
+
+    <!-- SECCIÓN UBICACIÓN Y HORARIOS -->
+    <section id="contacto" class="content-section">
+        <h2>Ubicación y Horarios</h2>
+        <p>📍 <strong>Dirección:</strong> Avenida Acoyte 351, Caballito, Ciudad de Buenos Aires.<br>
+        🕒 <strong>Horarios:</strong> Abierto todos los días con atención personalizada.</p>
     </section>
 
 </body>
