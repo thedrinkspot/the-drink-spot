@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Drink Spot - Caballito</title>
     <style>
-        /* --- ESTILOS GENERALES Y RESET --- */
+        /* --- ESTILOS GENERALES --- */
         * {
             margin: 0;
             padding: 0;
@@ -65,7 +65,7 @@
             color: #f5a623;
         }
 
-        /* --- SECCIÓN PRINCIPAL (HERO) CON TU FOTO REAL --- */
+        /* --- PORTADA PRINCIPAL (HERO) --- */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -133,29 +133,89 @@
             background-color: #1ebe5d;
         }
 
-        /* --- SECCIONES DE CONTENIDO --- */
-        section.content-section {
-            padding: 80px 10% 60px 10%;
-            min-height: 60vh;
+        /* --- SECCIONES GENERALES --- */
+        section {
+            padding: 90px 8% 60px 8%;
             border-bottom: 1px solid #222;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
-        section.content-section h2 {
-            font-size: 2.2rem;
+        section h2 {
+            font-size: 2.3rem;
             color: #f5a623;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* --- GRILLA DE RUBROS --- */
+        .rubros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .rubro-card {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .rubro-card:hover {
+            transform: translateY(-5px);
+            border-color: #f5a623;
+        }
+
+        .rubro-card h3 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .rubro-card p {
+            color: #aaa;
+            font-size: 0.95rem;
             margin-bottom: 15px;
         }
 
-        section.content-section p {
+        /* --- EL LOCAL Y MAPA --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .local-info p {
             font-size: 1.1rem;
             color: #ccc;
             line-height: 1.6;
+            margin-bottom: 15px;
         }
 
-        /* --- ADAPTACIÓN RESPONSIVA PARA CELULARES --- */
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- ADAPTACIÓN RESPONSIVA CELULARES --- */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -164,12 +224,12 @@
             }
 
             .nav-links {
-                gap: 15px;
+                gap: 12px;
                 font-size: 0.85rem;
             }
 
             .hero {
-                padding-top: 140px; /* Evita que el menú tapé el título */
+                padding-top: 140px;
             }
 
             .hero h1 {
@@ -177,16 +237,8 @@
                 line-height: 1.2;
             }
 
-            .hero p {
-                font-size: 0.95rem;
-            }
-
-            section.content-section {
-                padding: 60px 6%;
-            }
-
-            section.content-section h2 {
-                font-size: 1.8rem;
+            section {
+                padding: 70px 5%;
             }
         }
     </style>
@@ -200,37 +252,73 @@
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#rubros">Rubros</a></li>
             <li><a href="#el-local">El Local</a></li>
-            <li><a href="#contacto">Ubicación</a></li>
+            <li><a href="#ubicacion">Ubicación y Horarios</a></li>
         </ul>
     </header>
 
-    <!-- PORTADA PRINCIPAL (INICIO) -->
+    <!-- PORTADA PRINCIPAL -->
     <section id="inicio" class="hero">
         <h1>Las mejores bebidas, <span>siempre frías</span></h1>
         <p>Seleccioná el rubro que estás buscando para explorar todo nuestro catálogo con stock actualizado al instante.</p>
         <div class="btn-container">
             <a href="#rubros" class="btn-primary">Explorar Rubros</a>
-            <a href="https://wa.me/" target="_blank" class="btn-whatsapp">Pedir por WhatsApp</a>
+            <a href="https://wa.me/5491139427635" target="_blank" class="btn-whatsapp">Pedir por WhatsApp</a>
         </div>
     </section>
 
     <!-- SECCIÓN RUBROS -->
-    <section id="rubros" class="content-section">
+    <section id="rubros">
         <h2>Nuestros Rubros</h2>
-        <p>Acá se desplegarán próximamente todas las categorías de cervezas, vinos, espumantes, aperitivos y más. ¡Preparado para tu selección!</p>
+        <div class="rubros-grid">
+            <div class="rubro-card">
+                <h3>Cervezas</h3>
+                <p>Artesanales, industriales, nacionales e importadas siempre en punto.</p>
+            </div>
+            <div class="rubro-card">
+                <h3>Vinos & Espumantes</h3>
+                <p>Etiquetas seleccionadas, tintos, blancos, rosados y espumantes.</p>
+            </div>
+            <div class="rubro-card">
+                <h3>Aperitivos & Espirituosas</h3>
+                <p>Fernet, gin, vodka, aperitivos y todo para tus previas.</p>
+            </div>
+            <div class="rubro-card">
+                <h3>Hielo & Extras</h3>
+                <p>Bolsas de hielo, energizantes, gaseosas, cristalería y accesorios.</p>
+            </div>
+        </div>
     </section>
 
     <!-- SECCIÓN EL LOCAL -->
-    <section id="el-local" class="content-section">
+    <section id="el-local">
         <h2>El Local</h2>
-        <p>Ubicados en el corazón de Caballito, contamos con la mayor variedad de bebidas nacionales e importadas, cristalería y accesorios para que disfrutes al máximo.</p>
+        <div class="info-grid">
+            <div class="local-info">
+                <p>Ubicados en el corazón de <strong>Caballito</strong>, en <strong>The Drink Spot</strong> vas a encontrar un espacio pensado para ofrecerte rapidez, variedad y la bebida perfecta para cada ocasión.</p>
+                <p>Contamos con exhibidoras de última generación para asegurar que cada lata o botella llegue a tus manos en su temperatura ideal.</p>
+                <p>📍 <strong>Dirección:</strong> Av. Acoyte 351, Caballito, CABA.</p>
+            </div>
+            <div>
+                <img src="img/local - frente.jpeg" alt="The Drink Spot Local" style="width: 100%; border-radius: 10px; border: 1px solid #333;">
+            </div>
+        </div>
     </section>
 
     <!-- SECCIÓN UBICACIÓN Y HORARIOS -->
-    <section id="contacto" class="content-section">
+    <section id="ubicacion">
         <h2>Ubicación y Horarios</h2>
-        <p>📍 <strong>Dirección:</strong> Avenida Acoyte 351, Caballito, Ciudad de Buenos Aires.<br><br>
-        🕒 <strong>Horarios:</strong> Abierto todos los días con atención personalizada.</p>
+        <div class="info-grid">
+            <div class="local-info">
+                <p>🕒 <strong>Horarios de Atención:</strong><br>
+                Abierto todos los días con atención personalizada y envíos rápidos en la zona.</p>
+                <p>📞 <strong>Contacto directo:</strong> 11 3942-7635</p>
+                <p>💬 Hacé tu pedido al toque por WhatsApp y retiralo sin esperas o recibilo en casa.</p>
+            </div>
+            <div class="map-container">
+                <!-- Mapa interactivo de Google Maps apuntando a Av. Acoyte 351 -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.9926414749215!2d-58.43722552346985!3d-34.61365005739097!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb0728c3c78d%3A0x83e2ef26194b2a92!2sAv.%20Acoyte%20351%2C%20C1405%20CABA!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
     </section>
 
 </body>
